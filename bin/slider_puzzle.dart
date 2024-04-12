@@ -12,11 +12,12 @@ void main(List<String> arguments) {
 
   // solve the puzzle
   Solver solver = Solver(initial);
-  
+
   // print the solution to standard output
   if (!solver.isSolvable()) {
     print('No solution possible');
   } else {
+    print(initial);
     print('Minimum number of moves = ${solver.moves()}');
     for (Board board in solver.solution()) {
       print(board);
