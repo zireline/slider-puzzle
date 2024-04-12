@@ -2,20 +2,18 @@ export "board.dart";
 
 class Board {
   // create a board from an n-by-n array of tiles,
-  late List<List<int>> tiles;
-  late int hammingDistance;
-  late int manhattanDistance;
-  late List<Board> neighboringBoards;
+  List<List<int>> tiles;
+  int hammingDistance;
+  int manhattanDistance;
+  List<Board> neighboringBoards;
 
   // where tiles[row][col] = tile at (row, col)
-  Board(List<List<int>> inputTiles) {
-    // Initialize
-    tiles = inputTiles;
-    neighboringBoards = [];
-
-    int hammingTotal = 0;
-    int manhattanTotal = 0;
-
+  // Initialize
+  Board(List<List<int>> inputTiles)
+      : hammingDistance = 0,
+        manhattanDistance = 0,
+        neighboringBoards = [],
+        tiles = inputTiles {
     for (int i = 0; i < tiles.length; i++) {
       for (int j = 0; j < tiles[i].length; j++) {
         int tile = tiles[i][j];
@@ -25,17 +23,15 @@ class Board {
         }
 
         if (tiles[i][j] != 0 && tiles[i][j] != i * tiles.length + j + 1) {
-          hammingTotal++;
+          hammingDistance++;
         }
 
         List<int> target = findPosition(tile);
         int targetRow = target[0];
         int targetCol = target[1];
-        manhattanTotal += (targetRow - i).abs() + (targetCol - j).abs();
+        manhattanDistance += (targetRow - i).abs() + (targetCol - j).abs();
       }
     }
-    hammingDistance = hammingTotal;
-    manhattanDistance = manhattanTotal;
   }
 
   // string representation of this board
@@ -164,7 +160,7 @@ class Board {
 
   // a board that is obtained by exchanging any pair of tiles
   Board twin() {
-     List<List<int>> twinTiles = tilesCopy();
+    List<List<int>> twinTiles = tilesCopy();
     if (tiles[0][0] != 0 && tiles[0][1] != 0) {
       twinTiles[0][0] = tiles[0][1];
       twinTiles[0][1] = tiles[0][0];
@@ -173,11 +169,11 @@ class Board {
       twinTiles[1][1] = tiles[1][0];
     }
     return Board(twinTiles);
-   
   }
 
-   List<List<int>> tilesCopy() {
-    List<List<int>> tilesCopy = List.generate(dimension(), (i) => List.filled(dimension(), 0));
+  List<List<int>> tilesCopy() {
+    List<List<int>> tilesCopy =
+        List.generate(dimension(), (i) => List.filled(dimension(), 0));
     for (int i = 0; i < dimension(); i++) {
       for (int j = 0; j < dimension(); j++) {
         tilesCopy[i][j] = tiles[i][j];
