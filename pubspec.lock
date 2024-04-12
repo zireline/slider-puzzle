@@ -169,6 +169,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  min_max_heap:
+    dependency: "direct main"
+    description:
+      name: min_max_heap
+      sha256: de30276c7f7febac6700ef4c587eb9ee26d10bb5566ecfcf06db610dbeef53dd
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   node_preamble:
     dependency: transitive
     description:

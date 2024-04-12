@@ -1,4 +1,4 @@
-import 'package:slider_puzzle/classes/board.dart';
+import "package:slider_puzzle/classes/board.dart";
 import 'package:slider_puzzle/classes/solver.dart';
 import 'package:slider_puzzle/get_file.dart';
 
@@ -12,7 +12,7 @@ void main(List<String> arguments) {
 
   // solve the puzzle
   Solver solver = Solver(initial);
-
+  
   // print the solution to standard output
   if (!solver.isSolvable()) {
     print('No solution possible');
