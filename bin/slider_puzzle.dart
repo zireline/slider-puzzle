@@ -1,4 +1,4 @@
-import 'package:slider_puzzle/classes/board.dart';
+import "package:slider_puzzle/classes/board.dart";
 import 'package:slider_puzzle/classes/solver.dart';
 import 'package:slider_puzzle/get_file.dart';
 
@@ -17,9 +17,15 @@ void main(List<String> arguments) {
   if (!solver.isSolvable()) {
     print('No solution possible');
   } else {
+    print(initial);
     print('Minimum number of moves = ${solver.moves()}');
-    for (Board board in solver.solution()) {
-      print(board);
+
+    List<Board>? solution = solver.solution();
+
+    if (solution != null) {
+      for (Board board in solution) {
+        print(board);
+      }
     }
   }
 }
