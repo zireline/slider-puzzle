@@ -19,8 +19,13 @@ void main(List<String> arguments) {
   } else {
     print(initial);
     print('Minimum number of moves = ${solver.moves()}');
-    for (Board board in solver.solution()) {
-      print(board);
+
+    List<Board>? solution = solver.solution();
+
+    if (solution != null) {
+      for (Board board in solution) {
+        print(board);
+      }
     }
   }
 }
